@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIOps - <%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <%- include('../partials/sidebar') %>
+        <div class="main-content">
+            <%- include('../partials/header') %>
+
+            <main class="content-body">
+                <h2><%= title %> Overview</h2>
+
+                <div class="kpi-cards">
+                    <div class="card">
+                        <h3>Active Incidents</h3>
+                        <p class="kpi-value"><%= kpis.activeIncidents %></p>
+                    </div>
+                    <div class="card">
+                        <h3>Anomalies Today</h3>
+                        <p class="kpi-value"><%= kpis.anomalyCount %></p>
+                    </div>
+                    <div class="card">
+                        <h3>Services Healthy</h3>
+                        <p class="kpi-value"><%= kpis.servicesHealthy %></p>
+                    </div>
+                </div>
+
+                <div class="incidents-list card">
+                    <h3>Active Incidents</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Title</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% incidents.forEach(incident => { %>
+                                <tr>
+                                    <td><span class="priority <%= incident.priority.toLowerCase() %>"><%= incident.priority %></span></td>
+                                    <td><%= incident.title %></td>
+                                    <td><a href="/incidents/<%= incident.id %>">Investigate</a></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+            <%- include('../partials/footer') %>
+        </div>
+    </div>
+    <script src="/js/main.js"></script>
+</body>
+</html>

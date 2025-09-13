@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIOps - Intelligent Observability</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style> body { font-family: 'Poppins', sans-serif; } </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <%- include('../partials/public_header') %>
+
+    <main>
+        <section class="text-center py-20 md:py-32 bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">AI-Powered Observability</h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Go from reactive to proactive. Predict failures, analyze logs in seconds, and understand your system like never before.</p>
+                <a href="/signup" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">Get Started for Free</a>
+            </div>
+        </section>
+
+        <section id="features" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-12">Why Choose Our Platform?</h2>
+                <div class="grid md:grid-cols-3 gap-12">
+                    
+                    <a href="/signup" class="block bg-gray-800 p-8 rounded-lg transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-bold mb-3">Anomaly Detection</h3>
+                        <p class="text-gray-400">Our AI automatically learns your system's baseline and alerts you to meaningful deviations, not just static thresholds.</p>
+                    </a>
+                    
+                    <a href="/signup" class="block bg-gray-800 p-8 rounded-lg transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-bold mb-3">Interactive Shell</h3>
+                        <p class="text-gray-400">Query your logs, metrics, and traces in real-time with an intuitive, powerful command-line interface.</p>
+                    </a>
+
+                    <a href="/signup" class="block bg-gray-800 p-8 rounded-lg transform hover:scale-105 transition-transform duration-300">
+                        <h3 class="text-xl font-bold mb-3">Root Cause Analysis</h3>
+                        <p class="text-gray-400">Connect the dots from a performance spike to the exact log pattern and code deploy that caused it.</p>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

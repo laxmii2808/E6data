@@ -1,0 +1,22 @@
+{
+  "name": "e6data",
+  "version": "1.0.0",
+  "description": "An AI-Powered Observability Platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "aiops",
+    "observability",
+    "express",
+    "ejs"
+  ],
+  "author": "Laxmi",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2"
+  }
+}

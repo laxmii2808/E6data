@@ -1,0 +1,10 @@
+<div id="terminal">
+    <div id="terminal-output">
+        <div class="log-line">AIOps Query Shell connected. Session started on <%= new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) %>.</div>
+        <div class="log-line">Try: <span class="code-snippet">users.find()</span> or <span class="code-snippet">products.find({ "category": "Electronics" })</span></div>
+    </div>
+    <div class="prompt-line">
+        <span class="prompt-arrow">&gt;</span>
+        <input type="text" id="command-input" autofocus autocomplete="off">
+    </div>
+</div>

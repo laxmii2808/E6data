@@ -1,0 +1,111 @@
+/* public/css/style.css */
+:root {
+    --bg-color: #f4f7f6;
+    --sidebar-bg: #2c3e50;
+    --header-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --light-text: #ecf0f1;
+    --primary-color: #3498db;
+    --high-priority: #e74c3c;
+    --medium-priority: #f39c12;
+    --low-priority: #2ecc71;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.app-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 240px;
+    background-color: var(--sidebar-bg);
+    color: var(--light-text);
+    height: 100vh;
+    position: fixed;
+}
+.sidebar-nav ul { list-style: none; padding: 20px 0; }
+.sidebar-nav li a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--light-text);
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.sidebar-nav li a:hover, .sidebar-nav li.active { background-color: rgba(255, 255, 255, 0.1); }
+
+
+.main-content {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    background: var(--header-bg);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo h1 { font-size: 1.5rem; margin: 0; }
+
+.content-body {
+    padding: 2rem;
+    flex-grow: 1;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.kpi-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.kpi-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0.5rem 0 0 0;
+}
+
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+th { font-weight: 600; }
+
+.priority {
+    padding: 4px 8px;
+    border-radius: 12px;
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+.priority.high { background-color: var(--high-priority); }
+.priority.medium { background-color: var(--medium-priority); }
+.priority.low { background-color: var(--low-priority); }
+
+
+.main-footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #777;
+    background: var(--bg-color);
+}
