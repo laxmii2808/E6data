@@ -2,10 +2,6 @@
 const express = require('express');
 const router = express.Router();
 
-// =================================================================
-//  1. MIDDLEWARE AND DATA HELPERS
-// =================================================================
-
 const isAuthenticated = (req, res, next) => {
     if (req.session.userId) {
         return next();
@@ -44,27 +40,23 @@ function executeQuery(command) {
     return data;
 }
 
-// =================================================================
-//  2. PUBLIC ROUTES (No login required)
-// =================================================================
-
 router.get('/', (req, res) => {
-    res.render('pages/home');
+    res.render('pages/home', { layout: false });
 });
 
-// =================================================================
-//  3. PROTECTED ROUTES (Login is required)
-// =================================================================
-
 router.get('/dashboard', isAuthenticated, (req, res) => {
-    res.render('layout', {
-        body: 'pages/dashboard', title: 'Dashboard', page: 'dashboard', user: req.session.userId
+    res.render('pages/dashboard', {
+        title: 'Dashboard',
+        page: 'dashboard',
+        user: req.user.email 
     });
 });
 
 router.get('/shell', isAuthenticated, (req, res) => {
-    res.render('layout', {
-        body: 'pages/shell', title: 'Query Shell', page: 'shell', user: req.session.userId
+    res.render('pages/shell', {
+        title: 'Query Shell', 
+        page: 'shell',
+        user: req.user.email
     });
 });
 
