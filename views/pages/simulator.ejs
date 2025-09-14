@@ -1,0 +1,39 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">
+    
+    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+        <h2 class="text-xl font-bold text-white mb-4">Create Connection Request</h2>
+        <p class="text-gray-400 mb-6 text-sm">Fill out the form to simulate a POST request to the `/api/simulate/connection` endpoint.</p>
+        
+        <form id="request-form">
+            <div class="space-y-4">
+                <div>
+                    <label for="connectionName" class="block text-sm font-medium text-gray-300">Connection Name</label>
+                    <input type="text" id="connectionName" name="connectionName" value="My Test MongoDB" class="mt-1 block w-full bg-gray-900 border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="databaseType" class="block text-sm font-medium text-gray-300">Database Type</label>
+                    <input type="text" id="databaseType" name="databaseType" value="mongodb" class="mt-1 block w-full bg-gray-900 border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="host" class="block text-sm font-medium text-gray-300">Host</label>
+                    <input type="text" id="host" name="host" value="localhost" class="mt-1 block w-full bg-gray-900 border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                </div>
+            </div>
+            <div class="mt-8">
+                <button type="submit" id="send-request-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center transition duration-300">
+                    Send Request
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+        <h2 class="text-xl font-bold text-white mb-4">Response</h2>
+        <div class="bg-[#1e1e3f] rounded-lg text-sm h-full min-h-[300px]">
+            <pre class="h-full"><code id="response-output" class="language-json">
+// Click "Send Request" to see the API response here...
+            </code></pre>
+        </div>
+    </div>
+
+</div>

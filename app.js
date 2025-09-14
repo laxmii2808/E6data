@@ -2,7 +2,7 @@
 const express = require('express');
 const session = require('express-session');
 const path = require('path');
-
+// const DatabaseConnection = require('../models/DatabaseConnection');
 
 const mainRoutes = require('./routes/mainRoutes');
 const authRoutes = require('./routes/authRoutes');
@@ -15,7 +15,7 @@ app.use(session({
     secret: 'a-very-secret-key-for-your-app-change-me',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Set to true if you are using HTTPS
+    cookie: { secure: false } 
 }));
 
 // EJS View Engine Setup
@@ -30,8 +30,10 @@ app.use(express.urlencoded({ extended: true })); // For form submissions (login/
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Use the defined route handlers
+const apiRoutes = require('./routes/apiRoutes');
 app.use('/', authRoutes);
 app.use('/', mainRoutes);
+app.use('/api/v1', apiRoutes); 
 
 app.listen(PORT, () => {
     console.log(`Server is running in Varanasi on http://localhost:${PORT}`);

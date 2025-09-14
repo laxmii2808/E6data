@@ -59,7 +59,6 @@ router.get('/shell', isAuthenticated, (req, res) => {
         user: req.user.email
     });
 });
-
 router.post('/api/execute', isAuthenticated, (req, res) => {
     const { command } = req.body;
     if (!command) { return res.status(400).json({ error: "Command cannot be empty." }); }
@@ -69,6 +68,42 @@ router.post('/api/execute', isAuthenticated, (req, res) => {
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
+});
+router.post('/api/simulate/connection', isAuthenticated, (req, res) => {
+    const { connectionName, databaseType, host } = req.body;
+
+    if (!connectionName || !databaseType || !host) {
+        return res.status(400).json({ 
+            success: false,
+            message: "Missing required fields"
+        });
+    }
+
+    const dynamicResponse = {
+        success: true,
+        message: `Connection named '${connectionName}' was created successfully.`,
+        data: {
+            connectionId: "64a1b2c3d4e5f6789012345",
+            connectionName: connectionName,
+            status: "connected",
+            requestDetails: {
+                databaseTypeReceived: databaseType,
+                hostReceived: host
+            },
+            metadata: {
+                collections: ["users", "products", "logs"],
+                indexes: ["_id_", "email_1"]
+            }
+        }
+    };
+    res.status(201).json(dynamicResponse);
+});
+router.get('/simulator', isAuthenticated, (req, res) => {
+    res.render('pages/simulator', {
+        title: 'API Simulator',
+        page: 'simulator',
+        user: req.user ? req.user.email : req.session.userId
+    });
 });
 
 module.exports = router;

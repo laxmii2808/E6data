@@ -1,27 +1,29 @@
 const express = require('express');
 const router = express.Router();
+const axios = require('axios'); // Ensure axios is imported
+
 router.get('/signup', (req, res) => {
-    res.render('auth/signup', { page: 'signup' });
+    res.render('auth/signup', { page: 'signup', error: null });
 });
 
 router.post('/signup', async (req, res) => {
     try {
+        const { name, email, age, password } = req.body;
         const payload = {
-            ...req.body,
-            age: Number(req.body.age)
+            name,
+            email,
+            age: Number(age),
+            password
         };
-        const response = await fetch(
+        const response = await axios.post(
             "https://hackathon-backend-vwzw.onrender.com/api/auth/user",
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-            }
+            payload
         );
-        if (!response.ok) throw new Error("Signup failed");
+        console.log(response.data);
+        if (response.status !== 201 && response.status !== 200) throw new Error("Signup failed");
         res.redirect('/login');
     } catch (err) {
-        res.render('auth/signup', { page: 'signup', error: 'Signup failed. Try again.' });
+        res.render('auth/signup', { page: 'signup', error: err.message });
     }
 });
 
